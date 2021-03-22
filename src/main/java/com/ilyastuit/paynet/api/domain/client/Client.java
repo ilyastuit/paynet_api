@@ -39,7 +39,7 @@ public class Client {
     @Enumerated(EnumType.STRING)
     private ClientStatus status;
 
-    @OneToMany(mappedBy = "clients", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
     List<IP> ipList;
 
     private BigDecimal balance;
