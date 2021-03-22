@@ -1,0 +1,289 @@
+{
+  "info": {
+    "_postman_id": "0914ed98-cd87-4fee-95ec-2d9a36abd364",
+    "name": "gateway Copy",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "performTransaction",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"id\": 1,\n\t\"jsonrpc\": \"2.0\",\n\t\"method\":\"performTransaction\",\n\t\"token\":\"{{token}}\",\n\t\"params\": {\n\t\t\"id\":3,\n\t\t\"service_id\": 2,\n\t\t\"time\": 0,\n\t\t\"fields\": {\n\t\t\t\"phone_number\": \"909940852\",\n\t\t\t\"summa\": 50000\n\t\t}\n\t}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://agent.paynet.uz:8587/gw/transaction",
+          "protocol": "https",
+          "host": [
+            "agent",
+            "paynet",
+            "uz"
+          ],
+          "port": "8587",
+          "path": [
+            "gw",
+            "transaction"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get services",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"id\": 1,\n\t\"jsonrpc\": \"2.0\",\n\t\"method\":\"getServices\",\n\t\"token\":\"{{token}}\",\n\t\"params\": {\n\t\t\"last_updated_at\": 0\n\t}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://agent.paynet.uz:8587/gw/transaction",
+          "protocol": "https",
+          "host": [
+            "agent",
+            "paynet",
+            "uz"
+          ],
+          "port": "8587",
+          "path": [
+            "gw",
+            "transaction"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "checkTransaction",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"id\": 1,\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"checkTransaction\",\n    \"token\": \"{{token}}\",\n    \"params\": {\n        \"transaction_id\": \"9175516844\",\n        \"time\": 1574404757000\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://agent.paynet.uz:8587/gw/transaction",
+          "protocol": "https",
+          "host": [
+            "agent",
+            "paynet",
+            "uz"
+          ],
+          "port": "8587",
+          "path": [
+            "gw",
+            "transaction"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Summary report by date",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"id\": 1,\n\t\"jsonrpc\": \"2.0\",\n\t\"method\":\"summaryReportByDate\",\n\t\"token\":\"{{token}}\",\n\t\"params\": {\n\t\t\"start_date\": \"20191122\",\n\t\t\"end_date\": \"20191122\"\n\t}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://agent.paynet.uz:8587/gw/transaction",
+          "protocol": "https",
+          "host": [
+            "agent",
+            "paynet",
+            "uz"
+          ],
+          "port": "8587",
+          "path": [
+            "gw",
+            "transaction"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Summary report by id",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"id\": 1,\n\t\"jsonrpc\": \"2.0\",\n\t\"method\":\"summaryReportById\",\n\t\"token\":\"{{token}}\",\n\t\"params\": {\n\t\t\"start_id\": \"9171336624\",\n\t\t\"end_id\":   \"9171338956\"\n\t}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://agent.paynet.uz:8587/gw/transaction",
+          "protocol": "https",
+          "host": [
+            "agent",
+            "paynet",
+            "uz"
+          ],
+          "port": "8587",
+          "path": [
+            "gw",
+            "transaction"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Detailed report by id",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"id\": 1,\n\t\"jsonrpc\": \"2.0\",\n\t\"method\":\"detailedReportById\",\n\t\"token\":\"{{token}}\",\n\t\"params\": {\n\t\t\"start_id\": \"9169900000\",\n\t\t\"end_id\": \"9169903353\",\n\t\t\"service_id\": 3633\n\t}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://agent.paynet.uz:8587/gw/transaction",
+          "protocol": "https",
+          "host": [
+            "agent",
+            "paynet",
+            "uz"
+          ],
+          "port": "8587",
+          "path": [
+            "gw",
+            "transaction"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "35e9c0c1-322c-4611-9526-c46e3ad67a57",
+            "exec": [
+              "var data = pm.response.json();\r",
+              "pm.environment.set(\"token\", data.result.token);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"id\": \"1\",\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"login\",\n    \"params\": {\n        \"username\": \"demo\",\n        \"password\": \"demopassword\",\n        \"terminal_id\": \"111\"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://agent.paynet.uz:8587/gw/transaction",
+          "protocol": "https",
+          "host": [
+            "agent",
+            "paynet",
+            "uz"
+          ],
+          "port": "8587",
+          "path": [
+            "gw",
+            "transaction"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "protocolProfileBehavior": {}
+}
