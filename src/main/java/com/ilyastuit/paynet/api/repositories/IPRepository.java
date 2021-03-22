@@ -1,7 +1,13 @@
 package com.ilyastuit.paynet.api.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import com.ilyastuit.paynet.api.domain.IP;
+import org.springframework.data.repository.CrudRepository;
 
-public interface IPRepository extends JpaRepository<IP, Long> {
+import java.util.List;
+
+public interface IPRepository extends CrudRepository<IP, Long> {
+
+    @Override
+    List<IP> findAll();
+
 }
