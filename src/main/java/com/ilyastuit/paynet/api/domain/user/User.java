@@ -1,9 +1,6 @@
 package com.ilyastuit.paynet.api.domain.user;
 
-import com.ilyastuit.paynet.api.domain.IP;
-
 import javax.persistence.*;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
