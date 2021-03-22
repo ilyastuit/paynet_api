@@ -18,16 +18,17 @@ public class Client {
     public Client(
             Long id,
             String name,
-            ClientStatus status,
-            BigDecimal balance,
             String username,
-            String password) {
+            String password,
+            BigDecimal balance,
+            ClientStatus status
+            ) {
         this.id = id;
         this.name = name;
-        this.status = status;
-        this.balance = balance;
         this.username = username;
         this.password = password;
+        this.balance = balance;
+        this.status = status;
     }
 
     @Id
@@ -36,19 +37,19 @@ public class Client {
 
     private String name;
 
+    private String username;
+
+    private String password;
+
+    private BigDecimal balance;
+
     @Enumerated(EnumType.STRING)
     private ClientStatus status;
 
     @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
     List<IP> ipList;
 
-    private BigDecimal balance;
-
     private LocalDateTime lastTransaction;
-
-    private String username;
-
-    private String password;
 
     public Long getId() {
         return id;
@@ -64,6 +65,30 @@ public class Client {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
 
     public ClientStatus getStatus() {
@@ -85,36 +110,12 @@ public class Client {
         }
     }
 
-    public BigDecimal getBalance() {
-        return balance;
-    }
-
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
-    }
-
     public LocalDateTime getLastTransaction() {
         return lastTransaction;
     }
 
     public void setLastTransaction(LocalDateTime lastTransaction) {
         this.lastTransaction = lastTransaction;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     @Override
