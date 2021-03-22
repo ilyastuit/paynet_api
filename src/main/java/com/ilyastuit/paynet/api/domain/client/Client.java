@@ -1,28 +1,31 @@
-package com.ilyastuit.paynet.api.domain;
+package com.ilyastuit.paynet.api.domain.client;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.ilyastuit.paynet.api.domain.IP;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
+@Table(name = "clients")
 public class Client {
 
-    public Client() {}
+    public Client() {
+    }
 
     public Client(
             Long id,
             String name,
+            ClientStatus status,
             BigDecimal balance,
-            LocalDateTime lastTransaction,
             String username,
             String password) {
         this.id = id;
         this.name = name;
+        this.status = status;
         this.balance = balance;
-        this.lastTransaction = lastTransaction;
         this.username = username;
         this.password = password;
     }
@@ -32,6 +35,12 @@ public class Client {
     private Long id;
 
     private String name;
+
+    @Enumerated(EnumType.STRING)
+    private ClientStatus status;
+
+    @OneToMany(mappedBy = "clients", fetch = FetchType.EAGER)
+    List<IP> ipList;
 
     private BigDecimal balance;
 
@@ -55,6 +64,25 @@ public class Client {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public ClientStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ClientStatus status) {
+        this.status = status;
+    }
+
+    public List<IP> getIpList() {
+        return ipList;
+    }
+
+    public void addIp(IP ip) {
+        this.ipList.add(ip);
+        if (ip.getClient() != this) {
+            ip.setClient(this);
+        }
     }
 
     public BigDecimal getBalance() {
@@ -96,19 +124,21 @@ public class Client {
 
         Client client = (Client) o;
 
-        if (id != null ? !id.equals(client.id) : client.id != null) return false;
-        if (name != null ? !name.equals(client.name) : client.name != null) return false;
-        if (balance != null ? !balance.equals(client.balance) : client.balance != null) return false;
-        if (lastTransaction != null ? !lastTransaction.equals(client.lastTransaction) : client.lastTransaction != null)
+        if (!Objects.equals(id, client.id)) return false;
+        if (!Objects.equals(name, client.name)) return false;
+        if (client.status != status) return false;
+        if (!Objects.equals(balance, client.balance)) return false;
+        if (!Objects.equals(lastTransaction, client.lastTransaction))
             return false;
-        if (username != null ? !username.equals(client.username) : client.username != null) return false;
-        return password != null ? password.equals(client.password) : client.password == null;
+        if (!Objects.equals(username, client.username)) return false;
+        return Objects.equals(password, client.password);
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (status != null ? status.hashCode() : 0);
         result = 31 * result + (balance != null ? balance.hashCode() : 0);
         result = 31 * result + (lastTransaction != null ? lastTransaction.hashCode() : 0);
         result = 31 * result + (username != null ? username.hashCode() : 0);
